@@ -9,6 +9,14 @@ namespace centralconfig_webapi.library
     [DataContract]
     public class ConfigItem
     {
+        public ConfigItem()
+        {
+            Application = "";
+            Machine = "";
+            Name = "";
+            Value = "";
+        }
+
         /// <summary>
         /// The unique id for this config item
         /// </summary>

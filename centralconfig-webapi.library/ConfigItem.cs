@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Web;
 
-namespace centralconfig_webapi.Models
+namespace centralconfig_webapi.library
 {
     /// <summary>
     /// Represents a single configuration item
@@ -16,7 +13,7 @@ namespace centralconfig_webapi.Models
         /// The unique id for this config item
         /// </summary>
         [DataMember(Name = "id")]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// The application name that the config item is associated with

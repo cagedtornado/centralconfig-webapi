@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "centralconfig-webapi", "centralconfig-webapi\centralconfig-webapi.csproj", "{566D7F5F-E1CF-4552-80DD-4305AC881F26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "centralconfig-webapi.library", "centralconfig-webapi.library\centralconfig-webapi.library.csproj", "{BCBB19E8-A92A-47EB-9D4C-594A7D32DD61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "centralconfig-webapi.library.tests", "centralconfig-webapi.library.tests\centralconfig-webapi.library.tests.csproj", "{99A2DC43-C843-49B3-A707-B8DAA534EAD8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{566D7F5F-E1CF-4552-80DD-4305AC881F26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{566D7F5F-E1CF-4552-80DD-4305AC881F26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{566D7F5F-E1CF-4552-80DD-4305AC881F26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCBB19E8-A92A-47EB-9D4C-594A7D32DD61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCBB19E8-A92A-47EB-9D4C-594A7D32DD61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCBB19E8-A92A-47EB-9D4C-594A7D32DD61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCBB19E8-A92A-47EB-9D4C-594A7D32DD61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99A2DC43-C843-49B3-A707-B8DAA534EAD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99A2DC43-C843-49B3-A707-B8DAA534EAD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99A2DC43-C843-49B3-A707-B8DAA534EAD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99A2DC43-C843-49B3-A707-B8DAA534EAD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

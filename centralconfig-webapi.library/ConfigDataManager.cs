@@ -146,6 +146,7 @@ namespace centralconfig_webapi.library
                 {
                     var item = query.FirstOrDefault();
 
+                    item.application = configItem.Application;
                     item.name = configItem.Name;
                     item.value = configItem.Value;
                     item.machine = configItem.Machine;

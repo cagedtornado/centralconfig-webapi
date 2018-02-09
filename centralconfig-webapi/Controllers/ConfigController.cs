@@ -36,13 +36,21 @@ namespace centralconfig_webapi.Controllers
         /// <summary>
         /// Sets the value of a single configuration item
         /// </summary>
-        /// <param name="configItem"></param>
+        /// <param name="request"></param>
         /// <returns></returns>
         [Route("set")]
         [HttpPost]
-        public ConfigItem Set(ConfigItem configItem)
+        public ConfigResponse<ConfigItem> Set(ConfigItem request)
         {
-            ConfigItem retval = new ConfigItem();
+            ConfigResponse<ConfigItem> retval = new ConfigResponse<ConfigItem>();
+
+            using (var db = new CentralConfigDb())
+            {
+                ConfigDataManager manager = new ConfigDataManager(db);
+                retval.Data = manager.Set(request);
+                retval.Status = System.Net.HttpStatusCode.OK;
+                retval.Message = "Config item updated";
+            }
 
             return retval;
         }
@@ -54,9 +62,19 @@ namespace centralconfig_webapi.Controllers
         /// <returns></returns>
         [Route("remove")]
         [HttpPost]
-        public ConfigItem Remove(ConfigItem configItem)
+        public ConfigResponse<ConfigItem> Remove(ConfigItem configItem)
         {
-            ConfigItem retval = new ConfigItem();
+            ConfigResponse<ConfigItem> retval = new ConfigResponse<ConfigItem>();
+
+            using (var db = new CentralConfigDb())
+            {
+                ConfigDataManager manager = new ConfigDataManager(db);
+                manager.Remove(configItem);
+
+                retval.Data = configItem;
+                retval.Status = System.Net.HttpStatusCode.OK;
+                retval.Message = "Config item removed";
+            }
 
             return retval;
         }
@@ -67,9 +85,17 @@ namespace centralconfig_webapi.Controllers
         /// <returns></returns>
         [Route("getall")]
         [HttpGet]
-        public List<ConfigItem> GetAll()
+        public ConfigResponse<List<ConfigItem>> GetAll()
         {
-            List<ConfigItem> retval = new List<ConfigItem>();
+            ConfigResponse<List<ConfigItem>> retval = new ConfigResponse<List<ConfigItem>>();
+
+            using (var db = new CentralConfigDb())
+            {
+                ConfigDataManager manager = new ConfigDataManager(db);
+                retval.Data = manager.GetAll();
+                retval.Status = System.Net.HttpStatusCode.OK;
+                retval.Message = "Config items found";
+            }
 
             return retval;
         }
@@ -77,13 +103,21 @@ namespace centralconfig_webapi.Controllers
         /// <summary>
         /// Retrieves all configurations items for a given application
         /// </summary>
-        /// <param name="configItem"></param>
+        /// <param name="request"></param>
         /// <returns></returns>
         [Route("getallforapp")]
         [HttpPost]
-        public List<ConfigItem> GetAllForApp(ConfigItem configItem)
+        public ConfigResponse<List<ConfigItem>> GetAllForApp(ConfigItem request)
         {
-            List<ConfigItem> retval = new List<ConfigItem>();
+            ConfigResponse<List<ConfigItem>> retval = new ConfigResponse<List<ConfigItem>>();
+
+            using (var db = new CentralConfigDb())
+            {
+                ConfigDataManager manager = new ConfigDataManager(db);
+                retval.Data = manager.GetAllForApp(request);
+                retval.Status = System.Net.HttpStatusCode.OK;
+                retval.Message = "Config items found";
+            }
 
             return retval;
         }
@@ -94,9 +128,17 @@ namespace centralconfig_webapi.Controllers
         /// <returns></returns>
         [Route("~/applications/getall")]
         [HttpGet]
-        public List<string> GetAllApplications()
+        public ConfigResponse<List<string>> GetAllApplications()
         {
-            List<string> retval = new List<string>();
+            ConfigResponse<List<string>> retval = new ConfigResponse<List<string>>();
+
+            using (var db = new CentralConfigDb())
+            {
+                ConfigDataManager manager = new ConfigDataManager(db);
+                retval.Data = manager.GetAllApplications();
+                retval.Status = System.Net.HttpStatusCode.OK;
+                retval.Message = "Applications found";
+            }
 
             return retval;
         }

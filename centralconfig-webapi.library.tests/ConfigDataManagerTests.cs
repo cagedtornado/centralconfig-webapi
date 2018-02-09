@@ -25,6 +25,8 @@ namespace centralconfig_webapi.library.tests
             new configitem { id = 7, application = "SomeOtherApp", name = "AnotherConfig", machine = "", value = "Some other value", updated = DateTime.Now.AddSeconds(-8) },
             new configitem { id = 8, application = "SomeOtherApp", name = "Environment", machine = "", value = "SPECIFIC", updated = DateTime.Now.AddSeconds(-12) },
             new configitem { id = 9, application = "SomeOtherApp", name = "Environment", machine = "Machine1", value = "MACHINESPECIFIC", updated = DateTime.Now.AddSeconds(-9) },
+            new configitem { id = 10, application = "*", name = "MachineGlobalSetting", machine = "Machine1", value = "Will never be found by default", updated = DateTime.Now.AddSeconds(-12) },
+
         };
 
         /// <summary>
@@ -53,7 +55,7 @@ namespace centralconfig_webapi.library.tests
             mockSet.As<IQueryable<configitem>>().Setup(m => m.Expression).Returns(qdata.Expression);
             mockSet.As<IQueryable<configitem>>().Setup(m => m.ElementType).Returns(qdata.ElementType);
             mockSet.As<IQueryable<configitem>>().Setup(m => m.GetEnumerator()).Returns(qdata.GetEnumerator());
-            
+
             //  Setup the database context
             mockContext.Setup(c => c.configitems).Returns(mockSet.Object);
         }
@@ -73,6 +75,40 @@ namespace centralconfig_webapi.library.tests
             Assert.AreEqual(0, result.Id);      //  Should be 0 - we didn't find anything
             Assert.AreEqual("", result.Name);   //  This stuff is blank
             Assert.AreEqual("", result.Value);
+        }
+
+        [TestMethod]
+        public void Get_ValidRequest_ReturnsExpectedConfigItem()
+        {
+            //  Arrange            
+            ConfigDataManager manager = new ConfigDataManager(mockContext.Object);
+
+            //  Arrange
+            Dictionary<ConfigItem, string> testRequestResponse = new Dictionary<ConfigItem, string>()
+            {
+                //  Request / Expected response value
+                {new ConfigItem { Name = "Environment" }, "DEV" },  //  No app specified, so we get the default
+                {new ConfigItem { Name = "Environment", Application = "BogusApp" }, "DEV" },  //  App doesn't match, so we get the default
+                {new ConfigItem { Application = "TestApp", Name = "Environment" }, "UNITTEST"}, //  Get the app specific match
+                {new ConfigItem { Application = "SomeOtherApp", Name = "SpecificConfig1" }, "Something somewhat specific"}, //  No machine specified
+                {new ConfigItem { Application = "SomeOtherApp", Name = "SpecificConfig1", Machine = "BogusMachine" }, "Something somewhat specific"}, //  Unrecognized machine gets the regular config
+                {new ConfigItem { Application = "SomeOtherApp", Name = "SpecificConfig1", Machine = "Machine1" }, "Something very specific"}, //  Machine specific
+
+                { new ConfigItem { Name = "MachineGlobalSetting" }, ""}, //  Putting machine names on global settings is weird ... (don't do this)
+                {new ConfigItem { Name = "MachineGlobalSetting", Machine = "Machine1" }, ""}, //  ... you can't just pass in a specific machine ...
+                {new ConfigItem { Application = "*", Name = "MachineGlobalSetting", Machine = "Machine1" }, "Will never be found by default"}, //  ... you also have to explicitly ask for the default (global) app.
+            };
+
+            //  For each item in the test table...
+            foreach (var item in testRequestResponse)
+            {
+                //  Act
+                var retval = manager.Get(item.Key);
+
+                //  Assert
+                Assert.AreEqual(item.Value, retval.Value);    //  Value should be what we expect
+            }
+
         }
 
         [TestMethod]

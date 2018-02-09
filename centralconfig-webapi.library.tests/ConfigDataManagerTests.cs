@@ -126,6 +126,34 @@ namespace centralconfig_webapi.library.tests
         }
 
         [TestMethod]
+        public void GetAll_ReturnsAllConfigItems()
+        {
+            //  Arrange
+            ConfigDataManager manager = new ConfigDataManager(mockContext.Object);
+
+            //  Act
+            var result = manager.GetAll();
+
+            //  Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(data.Count, result.Count);
+        }
+
+        [TestMethod]
+        public void GetAllForApp_ValidApp_ReturnsAllConfigItemsForApp()
+        {
+            //  Arrange
+            ConfigDataManager manager = new ConfigDataManager(mockContext.Object);
+
+            //  Act
+            var result = manager.GetAllForApp(new ConfigItem { Application = "SomeOtherApp" });
+
+            //  Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual(5, result.Count);
+        }
+
+        [TestMethod]
         public void Remove_ValidConfigItem_Successful()
         {
             //  Arrange
@@ -137,7 +165,7 @@ namespace centralconfig_webapi.library.tests
             //  Assert
             mockSet.Verify(m => m.Remove(It.IsAny<configitem>()), Times.Once());
             mockContext.Verify(m => m.SaveChanges(), Times.Once());
-        }
+        }        
 
         [TestMethod]
         public void Set_NewConfigItem_SuccessfullyAdds()
@@ -159,5 +187,28 @@ namespace centralconfig_webapi.library.tests
             mockSet.Verify(m => m.Add(It.IsAny<configitem>()), Times.Once());
             mockContext.Verify(m => m.SaveChanges(), Times.Once());
         }
+
+        [TestMethod]
+        public void Set_ExistingConfigItem_SuccessfullyUpdates()
+        {
+            //  Arrange            
+            ConfigDataManager manager = new ConfigDataManager(mockContext.Object);
+
+            ConfigItem newItem = new ConfigItem
+            {
+                Id = 6, /* Pass the id to make an update */
+                Application = "SomeOtherApp", /* Optional.  Not used in an update. */
+                Name = "SpecificConfig1", /* Optional.  Not used in an update. */
+                Value = "Something somewhat specific and updated"
+            };
+
+            //  Act
+            var retval = manager.Set(newItem);
+
+            //  Assert
+            mockSet.Verify(m => m.Add(It.IsAny<configitem>()), Times.Never());
+            mockContext.Verify(m => m.SaveChanges(), Times.Once());
+        }
+
     }
 }

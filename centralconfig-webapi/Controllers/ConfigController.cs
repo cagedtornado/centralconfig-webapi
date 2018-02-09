@@ -58,20 +58,20 @@ namespace centralconfig_webapi.Controllers
         /// <summary>
         /// Removes a single configuration item
         /// </summary>
-        /// <param name="configItem"></param>
+        /// <param name="request"></param>
         /// <returns></returns>
         [Route("remove")]
         [HttpPost]
-        public ConfigResponse<ConfigItem> Remove(ConfigItem configItem)
+        public ConfigResponse<ConfigItem> Remove(ConfigItem request)
         {
             ConfigResponse<ConfigItem> retval = new ConfigResponse<ConfigItem>();
 
             using (var db = new CentralConfigDb())
             {
                 ConfigDataManager manager = new ConfigDataManager(db);
-                manager.Remove(configItem);
+                manager.Remove(request);
 
-                retval.Data = configItem;
+                retval.Data = request;
                 retval.Status = System.Net.HttpStatusCode.OK;
                 retval.Message = "Config item removed";
             }

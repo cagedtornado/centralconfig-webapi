@@ -504,7 +504,7 @@
             <summary>
             Removes a single configuration item
             </summary>
-            <param name="configItem"></param>
+            <param name="request"></param>
             <returns></returns>
         </member>
         <member name="M:centralconfig_webapi.Controllers.ConfigController.GetAll">

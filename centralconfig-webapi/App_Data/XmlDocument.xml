@@ -490,7 +490,7 @@
             <summary>
             Retrieves a single configuration item. If it doesn't exist for the given application, it attemps to get it for the default application (*).
             </summary>
-            <param name="configItem"></param>
+            <param name="request"></param>
             <returns></returns>
         </member>
         <member name="M:centralconfig_webapi.Controllers.ConfigController.Set(centralconfig_webapi.library.ConfigItem)">

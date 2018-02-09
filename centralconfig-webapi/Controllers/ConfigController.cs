@@ -1,6 +1,7 @@
 ﻿using centralconfig_webapi.library;
 using System.Collections.Generic;
 using System.Web.Http;
+using centralconfig_webapi.library.Data;
 
 namespace centralconfig_webapi.Controllers
 {
@@ -13,13 +14,21 @@ namespace centralconfig_webapi.Controllers
         /// <summary>
         /// Retrieves a single configuration item. If it doesn't exist for the given application, it attemps to get it for the default application (*).
         /// </summary>
-        /// <param name="configItem"></param>
+        /// <param name="request"></param>
         /// <returns></returns>
         [Route("get")]
         [HttpPost]
-        public ConfigItem Get(ConfigItem configItem)
+        public ConfigResponse<ConfigItem> Get(ConfigItem request)
         {
-            ConfigItem retval = new ConfigItem();
+            ConfigResponse<ConfigItem> retval = new ConfigResponse<ConfigItem>();
+
+            using (var db = new CentralConfigDb())
+            {
+                ConfigDataManager manager = new ConfigDataManager(db);
+                retval.Data = manager.Get(request);
+                retval.Status = System.Net.HttpStatusCode.OK;
+                retval.Message = "Config item found";
+            }
 
             return retval;
         }

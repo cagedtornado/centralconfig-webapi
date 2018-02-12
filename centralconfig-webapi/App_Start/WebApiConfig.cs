@@ -14,6 +14,9 @@ namespace centralconfig_webapi
             // Web API routes
             config.MapHttpAttributeRoutes();
 
+            //  Enable CORS
+            config.EnableCors();
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

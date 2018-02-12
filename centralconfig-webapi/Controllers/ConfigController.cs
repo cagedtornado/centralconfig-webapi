@@ -1,13 +1,15 @@
 ﻿using centralconfig_webapi.library;
+using centralconfig_webapi.library.Data;
 using System.Collections.Generic;
 using System.Web.Http;
-using centralconfig_webapi.library.Data;
+using System.Web.Http.Cors;
 
 namespace centralconfig_webapi.Controllers
 {
     /// <summary>
     /// Configuration operations
     /// </summary>
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("config")]
     public class ConfigController : ApiController
     {

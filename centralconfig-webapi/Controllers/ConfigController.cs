@@ -87,6 +87,7 @@ namespace centralconfig_webapi.Controllers
         /// <returns></returns>
         [Route("getall")]
         [HttpGet]
+        [HttpPost]
         public ConfigResponse<List<ConfigItem>> GetAll()
         {
             ConfigResponse<List<ConfigItem>> retval = new ConfigResponse<List<ConfigItem>>();
@@ -130,6 +131,7 @@ namespace centralconfig_webapi.Controllers
         /// <returns></returns>
         [Route("~/applications/getall")]
         [HttpGet]
+        [HttpPost]
         public ConfigResponse<List<string>> GetAllApplications()
         {
             ConfigResponse<List<string>> retval = new ConfigResponse<List<string>>();

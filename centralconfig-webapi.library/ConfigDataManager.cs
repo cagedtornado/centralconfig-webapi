@@ -124,7 +124,7 @@ namespace centralconfig_webapi.library
                 var newItem = new configitem
                 {
                     application = configItem.Application,
-                    machine = configItem.Machine,
+                    machine = configItem.Machine ?? "",
                     name = configItem.Name,
                     value = configItem.Value,
                     updated = DateTime.Now
@@ -149,7 +149,7 @@ namespace centralconfig_webapi.library
                     item.application = configItem.Application;
                     item.name = configItem.Name;
                     item.value = configItem.Value;
-                    item.machine = configItem.Machine;
+                    item.machine = configItem.Machine ?? "";
                     item.updated = DateTime.Now;
 
                     _context.SaveChanges();
@@ -167,9 +167,9 @@ namespace centralconfig_webapi.library
         public void Remove(ConfigItem request)
         {
             var query = from item in _context.configitems
-                        where item.application.Trim() == request.Application.Trim()
-                        && item.name.Trim() == request.Name.Trim()
-                        && item.machine.Trim() == request.Machine.Trim()
+                        where item.application == request.Application
+                        && item.name == request.Name
+                        && item.machine == (request.Machine ?? "")
                         select item;
 
             //  If we have a match, remove the first match:

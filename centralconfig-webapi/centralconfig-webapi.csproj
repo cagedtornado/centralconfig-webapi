@@ -313,7 +313,7 @@
   <Target Name="BeforeBuild">
     <ItemGroup>
       <Content Include="UI\**\*.*">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       </Content>
     </ItemGroup>
   </Target>

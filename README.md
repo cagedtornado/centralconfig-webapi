@@ -13,12 +13,12 @@ ASP.NET WebAPI and Entity Framework version of the centralconfig service.  Suita
 API path              | Description
 ----------            | -----------
 /                     | Redirects to the /UI path (and the web based user interface)
-[/config/get]           | Gets a single configuration item
-[/config/set]           | Sets (creates or updates) a configuration item
-[/config/remove]        | Removes a configuration item
-[/config/getall]        | Gets all configuration items
-[/config/getallforapp]  | Get all configuration items for a single application (plus the default * application)
-[/applications/getall]  | Get all applications
+[/config/get](https://github.com/cagedtornado/centralconfig-webapi#configget)           | Gets a single configuration item
+[/config/set](https://github.com/cagedtornado/centralconfig-webapi#configset)           | Sets (creates or updates) a configuration item
+[/config/remove](https://github.com/cagedtornado/centralconfig-webapi#configremove)        | Removes a configuration item
+[/config/getall](https://github.com/cagedtornado/centralconfig-webapi#configgetall)      | Gets all configuration items
+[/config/getallforapp](https://github.com/cagedtornado/centralconfig-webapi#configgetallforapp)  | Get all configuration items for a single application (plus the default * application)
+[/applications/getall](https://github.com/cagedtornado/centralconfig-webapi#applicationsgetall)  | Get all applications
 
 #### Requests
 Most API operations expect a configitem object in the POST body that will be used to either filter (in a get operation), update or create (in a set operation), or remove an item (in a remove operation).  

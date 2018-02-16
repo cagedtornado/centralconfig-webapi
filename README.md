@@ -12,7 +12,7 @@ ASP.NET WebAPI and Entity Framework version of the centralconfig service.  Suita
 
 API path              | Description
 ----------            | -----------
-/                     | Redirects to the /UI path (and the web based user interface)
+/                     | Redirects to the /UI path (and the [web based user interface](https://github.com/cagedtornado/centralconfig-ui))
 [/config/get](https://github.com/cagedtornado/centralconfig-webapi#configget)           | Gets a single configuration item
 [/config/set](https://github.com/cagedtornado/centralconfig-webapi#configset)           | Sets (creates or updates) a configuration item
 [/config/remove](https://github.com/cagedtornado/centralconfig-webapi#configremove)        | Removes a configuration item

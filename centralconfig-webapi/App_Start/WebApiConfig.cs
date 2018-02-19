@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Web.Http;
 
 namespace centralconfig_webapi
@@ -16,6 +17,9 @@ namespace centralconfig_webapi
 
             //  Enable CORS
             config.EnableCors();
+
+            //  Enable JSON by default in the browser:
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

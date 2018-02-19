@@ -28,12 +28,12 @@ namespace centralconfig_webapi.library
             //  ATTEMPT ONE:
             //	Get the application/name/machine combo
             var query = from item in _context.configitems
-                        where 
-                        item.application == request.Application 
+                        where
+                        item.application == request.Application
                         && item.name == request.Name
                         && item.machine == request.Machine
                         select item;
-            
+
             //  Execute the query and see the results:
             if (query.Any())
             {
@@ -55,11 +55,11 @@ namespace centralconfig_webapi.library
             if (retval.Id == 0)
             {
                 query = from item in _context.configitems
-                            where
-                            item.application == request.Application
-                            && item.name == request.Name
-                            && item.machine.Trim() == ""
-                            select item;
+                        where
+                        item.application == request.Application
+                        && item.name == request.Name
+                        && item.machine.Trim() == ""
+                        select item;
 
                 //  Execute the query and see the results:
                 if (query.Any())
@@ -154,7 +154,7 @@ namespace centralconfig_webapi.library
 
                     _context.SaveChanges();
                 }
-            }            
+            }
 
             return retval;
         }

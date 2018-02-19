@@ -165,7 +165,7 @@ namespace centralconfig_webapi.library.tests
             //  Assert
             mockSet.Verify(m => m.Remove(It.IsAny<configitem>()), Times.Once());
             mockContext.Verify(m => m.SaveChanges(), Times.Once());
-        }        
+        }
 
         [TestMethod]
         public void Set_NewConfigItem_SuccessfullyAdds()

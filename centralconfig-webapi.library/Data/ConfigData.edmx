@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CentralConfigModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CentralconfigModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="configitem">
           <Key>
             <PropertyRef Name="id" />
@@ -16,14 +16,14 @@
           <Property Name="machine" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="updated" Type="datetime" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="CentralConfigModelStoreContainer">
+        <EntityContainer Name="CentralconfigModelStoreContainer">
           <EntitySet Name="configitem" EntityType="Self.configitem" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="CentralConfigModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="CentralconfigModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="configitem">
           <Key>
             <PropertyRef Name="id" />
@@ -43,9 +43,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CentralConfigModelStoreContainer" CdmEntityContainer="CentralConfigDb">
+        <EntityContainerMapping StorageEntityContainer="CentralconfigModelStoreContainer" CdmEntityContainer="CentralConfigDb">
           <EntitySetMapping Name="configitems">
-            <EntityTypeMapping TypeName="CentralConfigModel.configitem">
+            <EntityTypeMapping TypeName="CentralconfigModel.configitem">
               <MappingFragment StoreEntitySet="configitem">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="application" ColumnName="application" />

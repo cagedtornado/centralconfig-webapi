@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BCBB19E8-A92A-47EB-9D4C-594A7D32DD61}</ProjectGuid>
+    <ProjectGuid>{92569ABE-594C-447A-A999-57EDB29CEA1F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>centralconfig_webapi.library</RootNamespace>
     <AssemblyName>centralconfig-webapi.library</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,8 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigItem.cs" />
     <Compile Include="ConfigDataManager.cs" />
+    <Compile Include="ConfigItem.cs" />
     <Compile Include="ConfigResponse.cs" />
     <Compile Include="Data\ConfigData.Context.cs">
       <AutoGen>True</AutoGen>

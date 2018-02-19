@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{99A2DC43-C843-49B3-A707-B8DAA534EAD8}</ProjectGuid>
+    <ProjectGuid>{C31CAAB9-B66B-4D77-A8E5-605B22402697}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>centralconfig_webapi.library.tests</RootNamespace>
@@ -19,7 +19,6 @@
     <TestProjectType>UnitTest</TestProjectType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,7 +58,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
@@ -77,7 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\centralconfig-webapi.library\centralconfig-webapi.library.csproj">
-      <Project>{bcbb19e8-a92a-47eb-9d4c-594a7d32dd61}</Project>
+      <Project>{92569abe-594c-447a-a999-57edb29cea1f}</Project>
       <Name>centralconfig-webapi.library</Name>
     </ProjectReference>
   </ItemGroup>

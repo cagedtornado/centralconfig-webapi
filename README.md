@@ -6,7 +6,7 @@ Easy centralized application configuration for .NET apps.  This is an ASP.NET We
 * Grab the [latest release](https://github.com/cagedtornado/centralconfig-webapi/releases/latest), 
 * Unzip 
 * [Create an IIS site](https://support.microsoft.com/en-us/help/323972/how-to-set-up-your-first-iis-web-site) that points to the unzipped location
-* [Create the database](https://github.com/cagedtornado/centralconfig-webapi/blob/master/sql/centralconfig.sql) and set the [web.config connection strings](https://github.com/cagedtornado/centralconfig-webapi/blob/master/centralconfig-webapi/Web.config#L14) 
+* [Create the database using the script](https://github.com/cagedtornado/centralconfig-webapi/blob/master/sql/centralconfig.sql) (or the dacpac) and set the [web.config connection strings](https://github.com/cagedtornado/centralconfig-webapi/blob/master/centralconfig-webapi/Web.config#L14) 
 
 ## API server information
 
